@@ -1,0 +1,12 @@
+name: First WorkFlow
+on: workflow_dispatch  #user to start manually this work flow
+jobs:
+  first-job:
+    runs-on: ubuntu:latest
+    steps:
+      - name: print greetings
+        run: echo "Hello World"
+      - name: print goodbye
+        run: echo "Done - bye!"
+    
+  
