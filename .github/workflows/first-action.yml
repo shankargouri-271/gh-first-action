@@ -1,18 +1,25 @@
 name: nodejs
-on: push
+on:
+  push:
+    branches:  # Optional: Specify branches to trigger the workflow
+      - main    # Example: Only run on pushes to the "main" branch
+
 jobs:
-   jobname:
-   	runs-on: ubuntu-latest
- 	steps:
- 	  - name: Get code
- 	    uses: actions/checkout@3   #to get code from repository. This is an action.
-	  - name: Install Node.JS
-	    uses: actions/setup-node@v3
- 	    with:                                       #configuration details 
-	      node-version:  18
-    - name: Install dependencies
- 	    run: npm ci
-    - name: Run tests
-      run: npm test
+  jobname:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Get code
+        uses: actions/checkout@v3  # To get code from repository. This is an action.
+
+      - name: Install Node.JS
+        uses: actions/setup-node@v3
+        with:  # Configuration details
+          node-version: 18
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Run tests
+        run: npm test
 
   
