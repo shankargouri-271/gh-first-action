@@ -1,12 +1,18 @@
-name: First WorkFlow
-on: workflow_dispatch  #user to start manually this work flow
+name: nodejs
+on: push
 jobs:
-  first-job:
-    runs-on: ubuntu-latest #OS
-    steps:
-      - name: print greetings
-        run: echo "Hello World"
-      - name: print goodbye
-        run: echo "Done - bye!"
-    
+   jobname:
+   	runs-on: ubuntu-latest
+ 	steps:
+ 	  - name: Get code
+ 	    uses: actions/checkout@3   #to get code from repository. This is an action.
+	  - name: Install Node.JS
+	    uses: actions/setup-node@v3
+ 	    with:                                       #configuration details 
+	      node-version:  18
+    - name: Install dependencies
+ 	    run: npm ci
+    - name: Run tests
+      run: npm test
+
   
